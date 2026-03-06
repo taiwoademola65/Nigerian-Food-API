@@ -10,10 +10,10 @@
 
 <body>
 
-  <nav class="bg-white border-gray-200 py-2.5 px- dark:bg-gray-900 shadow sticky top-0 shadow-lg">
+  <nav class="bg-black border-gray-200 py-2.5 px- dark:bg-gray-900 shadow sticky top-0 shadow-lg">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
       <a href="#" class="flex items-center">
-        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Company Logo</span>
+        <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Company Logo</span>
       </a>
       <div class="flex items-center lg:order-2">
         <div class="hidden mt-2 mr-4 sm:inline-block">
@@ -21,7 +21,7 @@
         </div>
 
         <a href=""
-          class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Favorite</a>
+          class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-red-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-red-800">Favorite</a>
         <button data-collapse-toggle="mobile-menu-2" type="button"
           class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="mobile-menu-2" aria-expanded="true">
@@ -42,40 +42,43 @@
         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
           <li>
             <a href="#"
-              class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white"
+              class="block py-2 pl-3 pr-4 text-white hover:border-b border-gray-100 lg:bg-transparent lg:text-white hover:text-red-500 lg:p-0 dark:text-white "
               aria-current="page">About</a>
           </li>
           <li>
             <a href="#"
-              class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Meals</a>
+              class="block py-2 pl-3 pr-4 text-white hover:border-b border-gray-100 hover:text-red-500 lg:p-0">Meals</a>
           </li>
           <li>
             <a href="#"
-              class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+              class="block py-2 pl-3 pr-4  lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 text-white hover:border-b border-gray-100 hover:text-red-500">Contact</a>
           </li>
           <li>
         </ul>
       </div>
     </div>
   </nav>
-
   <section class="w-full">
-    <div class="w-full h-[520px] bg-[url('https://images.unsplash.com/photo-1449844908441-8829872d2607?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxob21lfGVufDB8MHx8fDE3MTA0MDE1NDZ8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center ">
-    <!-- Photo by '@insolitus' on Unsplash -->
-        <div>
-            <h1 class="text-white text-center xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl :text-xl font-semibold bg-gray-800 p-2 bg-opacity-40 rounded-sm">Discover Your New Home</h1>
-        </div>
-        <div class="w-full mx-auto">
-            <form>
-                <div class="xl:w-1/2 lg:w-[60%] sm:w-[70%] w-[90%] mx-auto flex gap-2 md:mt-6 mt-4 mx-4">
-                    <input type="text" class="border border-gray-400 w-full p-2 rounded-md text-xl pl-2"
-                            placeholder="" />
-                    <button type="submit" class="px-[10px] bg-blue-500 text-lg text-white rounded-md font-semibold">Search</button>
-                </div>
-            </form>
-        </div>
+    <div
+      class="w-full h-[560px] bg-[url('Food-Images/background-image.jpg')] bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center">
+
+      <!-- Photo by '@insolitus' on Unsplash -->
+      <div>
+        <h1
+          class="text-white text-center xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl :text-xl font-bold  p-5 bg-opacity-40 rounded-lg">
+          Discover Your New Home</h1>
+      </div>
+      <div class="w-full mx-auto">
+        <form>
+          <div class="xl:w-1/3 lg:w-[60%] sm:w-[70%] w-[90%] mx-auto flex gap-2 md:mt-6 mt-4 mx-4">
+            <input type="text" class="border border-white w-full p-2 rounded-md text-xl pl-2" placeholder="" />
+            <button type="submit"
+              class="px-[10px] bg-blue-500 text-lg text-white rounded-md font-semibold">Search</button>
+          </div>
+        </form>
+      </div>
     </div>
-</section>
+  </section>
   <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 
 
@@ -114,30 +117,30 @@
             <option value="South-East Nigeria">South-East Nigeria</option>
           </select>
         </div>
-            <!-- Toggle Checkboxes -->
-            <label class="flex items-center space-x-3 cursor-pointer">
-              <div class="relative">
-                <input type="checkbox" class="sr-only peer">
-                <div class="w-11 h-6 bg-gray-700 rounded-full peer-checked:bg-blue-600 transition-colors duration-300">
-                </div>
-                <div
-                  class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:left-6">
-                </div>
-              </div>
-              <span class="text-gray-900">Toggle Mavi</span>
-            </label>
+        <!-- Toggle Checkboxes -->
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <div class="relative">
+            <input type="checkbox" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-700 rounded-full peer-checked:bg-blue-600 transition-colors duration-300">
+            </div>
+            <div
+              class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:left-6">
+            </div>
+          </div>
+          <span class="text-gray-900">Toggle Mavi</span>
+        </label>
 
-            <label class="flex items-center space-x-3 cursor-pointer">
-              <div class="relative">
-                <input type="checkbox" class="sr-only peer">
-                <div class="w-11 h-6 bg-gray-700 rounded-full peer-checked:bg-red-600 transition-colors duration-300">
-                </div>
-                <div
-                  class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:left-6">
-                </div>
-              </div>
-              <span class="text-gray-900">Toggle Kırmızı</span>
-            </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <div class="relative">
+            <input type="checkbox" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-700 rounded-full peer-checked:bg-red-600 transition-colors duration-300">
+            </div>
+            <div
+              class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all duration-300 peer-checked:left-6">
+            </div>
+          </div>
+          <span class="text-gray-900">Toggle Kırmızı</span>
+        </label>
         <!-- Clear Filter Button -->
         <div class="flex items-end">
           <button
@@ -147,24 +150,106 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 
-</div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10" id="show">
+  </div>
+  <!-- CARD SECTION -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10 mb-15" id="show"></div>
 
-      <!-- Card 1 -->
-      <!-- <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300">
-      <img src="https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?q=80&w=2274&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Web Development" class="w-full h-48 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Web Development</h3>
-        <p class="text-gray-600 dark:text-gray-300">Build responsive websites using React, Node.js, and Tailwind CSS.</p>
-      </div> -->
+
+  <!-- MODAL -->
+  <div id="modal" style="display: none;"
+    class="fixed inset-0 z-40 min-h-full overflow-y-auto overflow-x-hidden transition flex items-center">
+    <!-- overlay -->
+    <div aria-hidden="true" class="fixed inset-0 w-full h-full cursor-pointer">
     </div>
 
+    <!-- Modal -->
+    <div class="relative w-full cursor-pointer pointer-events-none transition my-auto p-4">
+      <div
+        class="w-full py-2 bg-white cursor-default pointer-events-auto dark:bg-gray-800 relative rounded-xl mx-auto max-w-sm">
+
+        <button onclick="clearModal()" tabindex="-1" type="button"
+          class="absolute top-2 right-2 rtl:right-auto rtl:left-2">
+          <svg title="Close" tabindex="-1" class="h-4 w-4 cursor-pointer text-gray-400"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">
+            Close
+          </span>
+        </button>
 
 
+
+        <div class="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center p-6">
+          <div
+            class="bg-gray-50 dark:bg-gray-800 shadow-lg rounded-2xl overflow-hidden max-w-4xl w-full grid md:grid-cols-2">
+
+            <!-- Recipe Image -->
+            <div class="h-64 md:h-auto">
+              <img
+                src="https://www.allrecipes.com/thmb/SoBuPU73KcbYHl3Kp3j8Xx4A3fc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8805-CrispyFriedChicken-mfs-3x2-072-d55b8406d4ae45709fcdeb58a04143c2.jpg"
+                alt="Delicious Recipe" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Recipe Content -->
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h2 class="text-3xl font-bold font-serif text-gray-800 dark:text-white mb-2">Creamy Garlic Chicken</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">A rich and savory chicken recipe perfect for dinner
+                  nights.</p>
+
+                <!-- Ingredients -->
+                <div class="mb-4">
+                  <h3 class="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">Ingredients</h3>
+                  <ul class="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-200 text-sm">
+                    <li>2 chicken breasts</li>
+                    <li>4 cloves garlic, minced</li>
+                    <li>1 cup heavy cream</li>
+                    <li>1 tsp paprika</li>
+                    <li>Salt and pepper to taste</li>
+                  </ul>
+                </div>
+
+                <!-- Instructions -->
+                <div>
+                  <h3 class="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">Instructions</h3>
+                  <ol class="list-decimal pl-5 space-y-1 text-gray-700 dark:text-gray-200 text-sm">
+                    <li>Season the chicken and sear until golden.</li>
+                    <li>Add garlic and sauté until fragrant.</li>
+                    <li>Pour in cream and let it simmer.</li>
+                    <li>Return chicken and cook until done.</li>
+                    <li>Garnish and serve hot.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Footer CTA -->
+              <div class="mt-6 text-right">
+                <button
+                  class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-4 py-2 rounded-lg transition">Try
+                  Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
   </div>
-  </div>
+
+  <!-- <button onclick="foodAPI()">Click</button> -->
+  <!-- <p id="show"></p> -->
+
+
+
+
+  <!-- FOOTER -->
   <footer class="w-full bg-gray-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!--Grid-->
@@ -274,8 +359,6 @@
       </div>
     </div>
   </footer>
-  <!-- <button onclick="foodAPI()">Click</button> -->
-  <!-- <p id="show"></p> -->
 </body>
 <script src="script.js"></script>
 

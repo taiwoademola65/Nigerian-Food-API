@@ -11,9 +11,11 @@
       console.log(data);
       for (let i = 0; i < data.length; i++) {
         const foodData = data[i];
+        let images = "Food-Images/" + foodData.name.toLowerCase().replaceAll(" ", "-") + ".jpg"
+
         show.innerHTML += `
-      <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300">
-      <img src="https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?q=80&w=2274&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Web Development" class="w-full h-48 object-cover">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 cursor-pointer" title="Click for more information" onclick="modalFunction(${foodData.id})">
+      <img src=${images} alt="food-images" class="w-full h-60 object-cover">
       <div class="p-6">
         <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">${foodData.id}. ${foodData.name}</h3>
         <p class="text-gray-600 dark:text-gray-300">${foodData.description}</p>
@@ -52,3 +54,10 @@
 
   }
   foodAPI()
+const modalFunction = (foodId) =>{
+  document.getElementById('modal').style.display = 'block' 
+  // alert(foodId)
+}
+const clearModal = () =>{
+document.getElementById('modal').style.display = 'none'
+}
