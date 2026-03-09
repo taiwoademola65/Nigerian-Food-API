@@ -1,19 +1,48 @@
-  const endpoint = 'https://mongotest2026.vercel.app/api/foods'
-  const foodAPI = async () => {
-    const result = fetch(endpoint)
-    // console.log(result);
-    const awaitedResult = await result
-    // console.log(awaitedResult);
-    const convertedResult = await awaitedResult.json()
-    // console.log(convertedResult);
-    if (convertedResult.status === 201) {
-      let data = convertedResult.data
-      console.log(data);
-      for (let i = 0; i < data.length; i++) {
-        const foodData = data[i];
-        let images = "Food-Images/" + foodData.name.toLowerCase().replaceAll(" ", "-") + ".jpg"
+const foodAPI = async () => {
+  document.getElementById("spinner").style.display = 'block'
+  document.getElementById('errorMessage').style.display = 'none'
 
-        show.innerHTML += `
+  // Try and Catch
+
+  try {
+    const endpoint = 'https://mongotest2026.vercel.app/api/foods'
+    const result = fetch(endpoint)
+    const awaitedResult = await result
+    const convertedResult = await awaitedResult.json()
+    let allFoods = convertedResult.data
+    foodCards(allFoods);
+    document.getElementById("spinner").style.display = 'none'
+
+
+  } catch (error) {
+    document.getElementById("spinner").style.display = 'none'
+    document.getElementById('errorMessage').style.display = 'block'
+  }
+
+
+
+
+}
+
+foodAPI()
+const modalFunction = (foodId) => {
+  document.getElementById('modal').style.display = 'block'
+  // alert(foodId)
+}
+const clearModal = () => {
+  document.getElementById('modal').style.display = 'none'
+}
+
+const retryBtn = () =>{
+  foodAPI()
+}
+const foodCards = (foodArrays) => {
+  const show = document.getElementById('show')
+  for (let i = 0; i < foodArrays.length; i++) {
+    const foodData = foodArrays[i];
+    let images = "Food-Images/" + foodData.name.toLowerCase().replaceAll(" ", "-") + ".jpg"
+
+    show.innerHTML += `
       <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 cursor-pointer" title="Click for more information" onclick="modalFunction(${foodData.id})">
       <img src=${images} alt="food-images" class="w-full h-60 object-cover">
       <div class="p-6">
@@ -42,22 +71,13 @@
   <span class="shrink-0 rounded-full bg-emerald-500 px-3 font-mono text-md font-medium tracking-tight text-white">${foodData.region}</span>
  
 
-    ${foodData.isSpicy === true ? ` <span class="shrink-0 rounded-full bg-red-500 px-3 font-mono text-md font-medium tracking-tight text-white">Spicy</span>`: ''}
+    ${foodData.isSpicy === true ? ` <span class="shrink-0 rounded-full bg-red-500 px-3 font-mono text-md font-medium tracking-tight text-white">Spicy</span>` : ''}
 
-    ${foodData.isVegetarian === true ? ` <span class="shrink-0 rounded-full bg-red-500 px-3 font-mono text-md font-medium tracking-tight text-white">Vegetarian</span>`: ''}
+    ${foodData.isVegetarian === true ? ` <span class="shrink-0 rounded-full bg-red-500 px-3 font-mono text-md font-medium tracking-tight text-white">Vegetarian</span>` : ''}
 </div>
       </div>
     </div>`
-      }
-
-    }
-
   }
-  foodAPI()
-const modalFunction = (foodId) =>{
-  document.getElementById('modal').style.display = 'block' 
-  // alert(foodId)
+
 }
-const clearModal = () =>{
-document.getElementById('modal').style.display = 'none'
-}
+

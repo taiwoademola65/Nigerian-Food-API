@@ -153,7 +153,21 @@
   </div>
 
   </div>
-  <!-- CARD SECTION -->
+  <!-- Spinner -->
+  <div id="spinner" style="display: none;" class="border-gray-300 mx-auto mb-5 h-10 w-10 animate-spin rounded-full border-5 border-t-blue-600"></div>
+
+  <!-- Error Message -->
+   <div class="px-2 mt-16" id="errorMessage" style="display: none;">
+    <!-- Alert Error -->
+    <div class=" px-8 mx-auto my-2 rounded-md text-lg flex items-center mx-auto max-w-lg">
+        <P class="text-red-800">Something went wrong. <button onclick="retryBtn()" class="underline">Try again</button></P>
+    </div>
+    <!-- End Alert Error -->
+
+    
+    
+</div>
+  <!-- FOOD CARD SECTION -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10 mb-15" id="show"></div>
 
 
