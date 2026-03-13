@@ -1,49 +1,41 @@
-const foodAPI = async () => {
-  document.getElementById("spinner").style.display = 'block'
-  document.getElementById('errorMessage').style.display = 'none'
+let allFoods = [];
+
+
+async function foodAPI() {
+  document.getElementById("spinner").style.display = 'block';
+  document.getElementById('errorMessage').style.display = 'none';
 
   // Try and Catch
-
   try {
-    const endpoint = 'https://mongotest2026.vercel.app/api/foods'
-    const result = fetch(endpoint)
-    const awaitedResult = await result
-    const convertedResult = await awaitedResult.json()
-    let allFoods = convertedResult.data
+    const endpoint = 'https://mongotest2026.vercel.app/api/foods';
+    const result = await fetch(endpoint);
+    const convertedResult = await result.json();
+    allFoods = convertedResult.data;
     foodCards(allFoods);
-    document.getElementById("spinner").style.display = 'none'
-
-
   } catch (error) {
-    document.getElementById("spinner").style.display = 'none'
-    document.getElementById('errorMessage').style.display = 'block'
+    document.getElementById('errorMessage').style.display = 'block';
+  } finally {
+    document.getElementById("spinner").style.display = 'none';
   }
-
-
-
-
 }
 
 foodAPI()
-const modalFunction = (foodId) => {
-  document.getElementById('modal').style.display = 'block'
-  // alert(foodId)
-}
-const clearModal = () => {
-  document.getElementById('modal').style.display = 'none'
+function clearModal() {
+  document.getElementById('modal').style.display = 'none';
 }
 
-const retryBtn = () =>{
-  foodAPI()
+function retryBtn() {
+  foodAPI();
 }
-const foodCards = (foodArrays) => {
+function foodCards(foodArrays) {
   const show = document.getElementById('show')
+  show.innerHTML = ''
   for (let i = 0; i < foodArrays.length; i++) {
     const foodData = foodArrays[i];
     let images = "Food-Images/" + foodData.name.toLowerCase().replaceAll(" ", "-") + ".jpg"
 
     show.innerHTML += `
-      <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 cursor-pointer" title="Click for more information" onclick="modalFunction(${foodData.id})">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 cursor-pointer" title="Click for more information" onclick="foodId(${foodData.id})">
       <img src=${images} alt="food-images" class="w-full h-60 object-cover">
       <div class="p-6">
         <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">${foodData.id}. ${foodData.name}</h3>
@@ -80,4 +72,150 @@ const foodCards = (foodArrays) => {
   }
 
 }
+async function foodId(id) {
+  document.getElementById('spinner').style.display = 'block';
+  try {
+    const endpoint = 'https://mongotest2026.vercel.app/api/foods/' + encodeURIComponent(id);
+    const result = await fetch(endpoint);
+    const { data: food } = await result.json();
+    modalFunction(food);
+  } catch (error) {
+    document.getElementById('errorMessage').style.display = 'block';
+  } finally {
+    document.getElementById('spinner').style.display = 'none';
+  }
+}
+
+function modalFunction(food) {
+  let images = "Food-Images/" + food.name.toLowerCase().replaceAll(" ", "-") + ".jpg"
+
+  const ingredientsList = food.ingredients.map(function (ingredient){
+    return "<li>" + ingredient + "</li>";
+  }).join("")
+
+
+
+  document.getElementById('modalDetails').innerHTML = `
+  <div
+            class="bg-gray-50 dark:bg-gray-800 shadow-lg rounded-2xl overflow-hidden max-w-4xl w-full grid md:grid-cols-2">
+
+            <!-- Recipe Image -->
+            <div class="h-64 md:h-auto">
+              <img
+                src="${images}"
+                alt="Delicious Recipe" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Recipe Content -->
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h2 class="text-3xl font-bold font-serif text-gray-800 dark:text-white mb-2">${food.name}</h2>
+                <h4 class="text-md font-bold font-serif text-gray-800 dark:text-white mb-2">~${food.category} ~ ${food.region}</h4>
+
+                <p class="text-gray-600 dark:text-gray-300 mb-4">${food.description}</p>
+
+    <div class="flex-1 m-6">
+    <hr class="my-2">
+    <div class="flex flex-wrap justify-center">
+    ${food.isSpicy=== true ? `<button class="bg-red-500 rounded-lg text-white text-xs text-center self-center px-3 py-2 my-2 mx-2"><i
+          class="fab fa-github mr-1"></i> Spicy</button>` :''}
+
+           ${food.isVegetarian=== true ? `<button class="bg-green-700 rounded-lg text-white text-xs text-center self-center px-3 py-2 my-2 mx-2"><i
+          class="fab fa-github mr-1"></i> Vegetarian</button>` :''}
+      
+      <button class="bg-blue-700 rounded-lg text-white text-xs text-center self-center px-3 py-2 my-2 mx-2"><i
+          class="fab fa-facebook mr-1"></i> ${food.preparationTime}</button>
+      <button class="bg-red-700 rounded-lg text-white text-xs text-center self-center px-3 py-2 my-2 mx-2"><i
+          class="fab fa-youtube mr-1"></i> ${food.calories} Calories</button>
+    </div>
+  </div>
+
+
+  <div class="flex flex-col gap-4 p-6 justify-center text-lg font-poppins">
+    <a href="#"
+        class="bg-gray-100 flex-grow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full">
+        Difficulty
+        <div class="text-black font-sm text-sm pt-1">
+            <span>${food.difficulty}</span>
+        </div>
+    </a>
+    <a class="bg-gray-100 flex-grow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full"
+        href="#">
+        Price
+        <div class="text-black font-sm text-sm">
+            <span>${food.price}</span>
+        </div>
+    </a>
+    <a class="bg-gray-100 flex-grow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full"
+        href="#">
+        Serving Size
+        <div class="text-black font-sm text-sm">
+            <span>${food.servingSize}</span>
+        </div>
+    </a>
+    <a class="bg-gray-100 flex-grow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full"
+        href="#">
+        Category
+        <div class="text-black font-sm text-sm">
+            <span>${food.category}</span>
+        </div>
+    </a>
+</div>
+                <!-- Ingredients -->
+                <div class="mb-4">
+                  <h3 class="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">Ingredients (${food.ingredients.length})</h3>
+                  <ul class="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-200 text-sm">
+                  ${ingredientsList}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mt-6 text-right">
+        <button class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-4 py-2 rounded-lg transition"><i class="fa-regular fa-heart" style="color: #ffffff;"></i> Add Favorites</button>
+      </div>
+
+
+            </div>
+          </div>`
+  document.getElementById('modal').style.display = 'block'
+}
+async function categoryCheck(value) {
+  if (value === '') {
+    foodCards(allFoods);
+    return;
+  }
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('errorMessage').style.display = 'none';
+  try {
+    const endpoint = 'https://mongotest2026.vercel.app/api/foods/category/' + encodeURIComponent(value);
+    const result = await fetch(endpoint);
+    const { data: category } = await result.json();
+    foodCards(category);
+  } catch (error) {
+    document.getElementById('errorMessage').style.display = 'block';
+  } finally {
+    document.getElementById('spinner').style.display = 'none';
+  }
+}
+
+async function checkRegion(value) {
+  if (value === '') {
+    foodCards(allFoods);
+    return;
+  }
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('errorMessage').style.display = 'none';
+  try {
+    const endpoint = 'https://mongotest2026.vercel.app/api/foods/region/' + encodeURIComponent(value);
+    const result = await fetch(endpoint);
+    const { data: region } = await result.json();
+    foodCards(region);
+  } catch (error) {
+    document.getElementById('errorMessage').style.display = 'block';
+  } finally {
+    document.getElementById('spinner').style.display = 'none';
+  }
+}
+
+
 
