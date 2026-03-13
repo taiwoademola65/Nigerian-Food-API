@@ -217,5 +217,23 @@ async function checkRegion(value) {
   }
 }
 
+const searchFood = (e) =>{
+  // console.log(e.target.value);
+  const searchInput = e.target.value.toLowerCase().trim();
+
+  if (searchInput === '') {
+    foodCards(allFoods);
+    return;
+  }
+  
+  const filteredFoods = allFoods.filter(food => food.name.toLowerCase().includes(searchInput) ||
+  food.description.toLowerCase().includes(searchInput) ||
+  food.category.toLowerCase().includes(searchInput) ||
+  food.region.toLowerCase().includes(searchInput)
+)
+
+foodCards(filteredFoods)
+}
+
 
 
