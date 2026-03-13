@@ -248,6 +248,15 @@
 </body>
 <script>
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+  // Add this script to make the mobile menu toggle work
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.querySelector('[data-collapse-toggle="mobile-menu-2"]');
+  const menu = document.getElementById('mobile-menu-2');
+  
+  button.addEventListener('click', function() {
+    menu.classList.toggle('hidden');
+  });
+});
 </script>
 <script src="script.js"></script>
 
