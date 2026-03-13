@@ -206,7 +206,7 @@ async function checkRegion(value) {
   document.getElementById('spinner').style.display = 'block';
   document.getElementById('errorMessage').style.display = 'none';
   try {
-    const endpoint = 'https://mongotest2026.vercel.app/api/foods/region/' + encodeURIComponent(value);
+    const endpoint = ('https://mongotest2026.vercel.app/api/foods/region/' + value);
     const result = await fetch(endpoint);
     const { data: region } = await result.json();
     foodCards(region);
@@ -235,5 +235,51 @@ const searchFood = (e) =>{
 foodCards(filteredFoods)
 }
 
+
+
+const vegetarianCheck = async(e) => {
+  const vegCheck = e.target.checked
+  if(!vegCheck){
+    foodCards(allFoods)
+    return;
+  }
+  document.getElementById("spinner").style.display = 'block'
+
+  try {
+    const endpoint = ('https://mongotest2026.vercel.app/api/foods/filter/vegetarian')
+    const result =  fetch(endpoint)
+    const awaitedResult = await result
+    const convertedResult = await awaitedResult.json()
+    document.getElementById("spinner").style.display = 'none'
+    let veggie = convertedResult.data;
+    foodCards(veggie);
+  } catch (error) {
+    document.getElementById("spinner").style.display = 'none'
+    document.getElementById("errorMessage").style.display = 'block'
+  }
+}
+// Spicy check
+
+const spicyCheck = async(e) =>{
+  const spiCheck = e.target.checked
+  if(!spiCheck){
+    foodCards(allFoods)
+    return
+  }
+  document.getElementById("spinner").style.display = 'block'
+
+  try {
+    const endpoint = ('https://mongotest2026.vercel.app/api/foods/filter/spicy')
+    const result =  fetch(endpoint)
+    const awaitedResult = await result
+    const convertedResult = await awaitedResult.json()
+    document.getElementById("spinner").style.display = 'none'
+    let spicy = convertedResult.data;
+    foodCards(spicy);
+  } catch (error) {
+    document.getElementById("spinner").style.display = 'none'
+    document.getElementById("errorMessage").style.display = 'block'
+  }
+}
 
 
